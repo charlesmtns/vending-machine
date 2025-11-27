@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane alignment="CENTER" hgap="10.0" vgap="10" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.morrisonsislandcampus.cadvs.vendingmachine.controller.SignUpController">
+
+    <Button onAction="#onExitBotton" text="X" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+    <Text fill="#b2afaf" text="Start your journey" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+
+    <Text text="Create your account" GridPane.columnIndex="0" GridPane.rowIndex="2">
+        <font>
+            <Font size="31.0" />
+        </font>
+    </Text>
+
+    <Label GridPane.columnIndex="0" GridPane.rowIndex="3">First Name*</Label>
+    <TextField fx:id="firstName" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+
+    <Label GridPane.columnIndex="0" GridPane.rowIndex="5">Last Name*</Label>
+    <TextField fx:id="lastName" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+
+    <Label GridPane.columnIndex="0" GridPane.rowIndex="7">Pin*</Label>
+    <PasswordField fx:id="pin" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+
+    <Label GridPane.columnIndex="0" GridPane.rowIndex="9">Date of Birthday*</Label>
+    <DatePicker fx:id="birthday" GridPane.columnIndex="0" GridPane.rowIndex="10" />
+
+    <Label GridPane.columnIndex="0" GridPane.rowIndex="11">Gender</Label>
+    <ComboBox fx:id="gender" promptText="Select gender" GridPane.columnIndex="0" GridPane.rowIndex="12" />
+
+    <Label GridPane.columnIndex="0" GridPane.rowIndex="13">Email</Label>
+    <TextField fx:id="email" GridPane.rowIndex="14" />
+
+    <Label GridPane.columnIndex="0" GridPane.rowIndex="15">Mobile Number</Label>
+    <TextField fx:id="mobileNumber" GridPane.rowIndex="16" />
+
+    <Label GridPane.columnIndex="0" GridPane.rowIndex="17">Address</Label>
+    <TextField fx:id="address" GridPane.columnIndex="0" GridPane.rowIndex="18" />
+
+    <Label GridPane.columnIndex="0" GridPane.rowIndex="19">Country</Label>
+    <ComboBox fx:id="country" onAction="#onSelectCountry" promptText="Select Country" GridPane.rowIndex="20" />
+
+    <Label fx:id="lCounty" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="21">County</Label>
+    <ComboBox fx:id="county" promptText="Select County" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="22" />
+
+    <CheckBox fx:id="terms" text="Please accept our terms &amp; privacy policy" GridPane.columnIndex="0" GridPane.rowIndex="23" />
+
+    <Button alignment="CENTER" defaultButton="true" onAction="#onSignUpButton" prefWidth="260.0" text="Sign Up" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="24" />
+
+
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+    <padding>
+        <Insets bottom="20" top="20.0" />
+    </padding>
+</GridPane>
