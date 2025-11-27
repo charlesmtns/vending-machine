@@ -10,7 +10,7 @@ import java.util.List;
 
 public class CountyService {
 
-    private static final String COUNTY_FILE_NAME = "/data/counties.csv";
+    private static final String COUNTY_FILE_PATH = "/data/counties.csv";
     private final FileService fileService;
 
     public CountyService(FileService fileService) {
@@ -32,7 +32,7 @@ public class CountyService {
 
     private List<String> readCountiesFromFile() throws IOException {
         List<String> listCounties = new ArrayList<>();
-        try (InputStream inputStream = getClass().getResourceAsStream(COUNTY_FILE_NAME)) {
+        try (InputStream inputStream = getClass().getResourceAsStream(COUNTY_FILE_PATH)) {
             String sCounties = fileService.readFromInputStream(inputStream);
             String[] aCounties = sCounties.split(System.lineSeparator());
             listCounties.addAll(Arrays.asList(aCounties));
