@@ -3,9 +3,7 @@ package com.morrisonsislandcampus.cadvs.vendingmachine.service;
 import com.morrisonsislandcampus.cadvs.vendingmachine.entity.County;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CountyService {
@@ -20,7 +18,7 @@ public class CountyService {
     public List<String> getAllCounties() {
         List<County> counties = new ArrayList<>();
         try {
-            List<String> lCounties = readCountiesFromFile();
+            List<String> lCounties = this.fileService.readFromFile(COUNTY_FILE_PATH);
             for (String county : lCounties) {
                 counties.add(new County(county));
             }
@@ -28,15 +26,5 @@ public class CountyService {
             System.out.println(e.getMessage());
         }
         return counties.stream().map(County::name).toList();
-    }
-
-    private List<String> readCountiesFromFile() throws IOException {
-        List<String> listCounties = new ArrayList<>();
-        try (InputStream inputStream = getClass().getResourceAsStream(COUNTY_FILE_PATH)) {
-            String sCounties = fileService.readFromInputStream(inputStream);
-            String[] aCounties = sCounties.split(System.lineSeparator());
-            listCounties.addAll(Arrays.asList(aCounties));
-        }
-        return listCounties;
     }
 }
