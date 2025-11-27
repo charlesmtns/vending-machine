@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane alignment="CENTER" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.morrisonsislandcampus.cadvs.vendingmachine.controller.HomeController">
+
+    <Text text="Welcome" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
+        <font>
+            <Font size="31.0" />
+        </font>
+    </Text>
+
+    <Text fill="#bcbaba" text="Please choose any options to start" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="3"/>
+    <Button fx:id="btnSignIn" onAction="#onSignInButton" GridPane.columnIndex="0" GridPane.rowIndex="2">
+        Sign In
+    </Button>
+    <Button fx:id="signup" onAction="#onSignUpButton" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        Sign Up
+    </Button>
+    <Button fx:id="guest" onAction="#onGuestButton" GridPane.columnIndex="2" GridPane.rowIndex="2">
+        Continue as a guest
+    </Button>
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+      <RowConstraints />
+    </rowConstraints>
+</GridPane>
