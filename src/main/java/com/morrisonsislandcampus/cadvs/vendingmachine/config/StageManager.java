@@ -1,5 +1,6 @@
 package com.morrisonsislandcampus.cadvs.vendingmachine.config;
 
+import com.morrisonsislandcampus.cadvs.vendingmachine.entity.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,6 +16,8 @@ public enum StageManager {
 
     private Stage primaryStage;
 
+    private User user;
+
     StageManager(Stage stage) {
         this.primaryStage = stage;
     }
@@ -23,8 +26,20 @@ public enum StageManager {
         return INSTANCE;
     }
 
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void switchScene(String fxmlPath) {
@@ -41,6 +56,11 @@ public enum StageManager {
         Parent rootNode = loadRootNode(fxmlPath);
         primaryStage.getScene().setRoot(rootNode);
         primaryStage.show();
+    }
+
+    public void switchToNextScene(final String fxmlPath, Object data) {
+        primaryStage.setUserData(data);
+        this.switchToNextScene(fxmlPath);
     }
 
     private Parent loadRootNode(String fxmlPath) {
