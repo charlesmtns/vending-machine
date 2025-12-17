@@ -25,6 +25,6 @@ public class HomeController {
 
     @FXML
     private void onGuestButton(ActionEvent event) {
-
+        this.stageManager.switchToNextScene(FxmlViewPath.VENDING);
     }
 }
