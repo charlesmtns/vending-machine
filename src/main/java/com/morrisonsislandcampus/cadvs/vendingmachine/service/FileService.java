@@ -1,20 +1,16 @@
 package com.morrisonsislandcampus.cadvs.vendingmachine.service;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class FileService {
 
-    private String readFromInputStream(InputStream inputStream)
-            throws IOException {
+    private String readFromInputStream(InputStream inputStream) throws IOException {
         StringBuilder resultStringBuilder = new StringBuilder();
-        try (BufferedReader br
-                     = new BufferedReader(new InputStreamReader(inputStream))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = br.readLine()) != null) {
                 resultStringBuilder.append(line).append("\n");
@@ -31,5 +27,12 @@ public class FileService {
             list.addAll(Arrays.asList(aData));
         }
         return list;
+    }
+
+    public void writeToFile(String filePath, String text) throws IOException {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(Objects.requireNonNull(getClass().getResource(filePath)).getPath()))) {
+            bw.write(text);
+            System.out.println("Successfully wrote to the file.");
+        }
     }
 }

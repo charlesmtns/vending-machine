@@ -9,6 +9,7 @@ import com.morrisonsislandcampus.cadvs.vendingmachine.entity.ShoppingCart;
 import com.morrisonsislandcampus.cadvs.vendingmachine.entity.User;
 import com.morrisonsislandcampus.cadvs.vendingmachine.service.DrinkService;
 import com.morrisonsislandcampus.cadvs.vendingmachine.service.FileService;
+import com.morrisonsislandcampus.cadvs.vendingmachine.service.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
@@ -29,9 +30,11 @@ public class VendingController {
 
     private final DrinkService drinkService;
 
-    private final User user;
+    private final UserService userService;
 
     private final ShoppingCart shoppingCart;
+
+    private final String username;
 
     @FXML
     private ImageView iCoke;
@@ -73,6 +76,9 @@ public class VendingController {
     private Button topUpButton;
 
     @FXML
+    private Button payButton;
+
+    @FXML
     private Button cashButton;
 
     @FXML
@@ -81,14 +87,12 @@ public class VendingController {
     @FXML
     private Text tBalance;
 
-    @FXML
-    private Text vBalance;
-
     public VendingController() {
         this.stageManager = StageManager.INSTANCE.getInstance();
+        this.username = (String) this.stageManager.getPrimaryStage().getUserData();
         FileService fileService = new FileService();
         this.drinkService = new DrinkService(fileService);
-        this.user = this.stageManager.getUser();
+        this.userService = new UserService(fileService);
         this.shoppingCart = new ShoppingCart();
     }
 
@@ -104,7 +108,6 @@ public class VendingController {
             this.sCoke.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(MIN_ON_HAND, coke.unitOnHand()));
             this.sCoke.valueProperty().addListener((o, oldValue, newValue) -> this.drinkOperationObservable(oldValue, newValue, coke));
         }
-
 
         Optional<Drink> oDietCoke = this.drinkService.find(DrinkEnum.DIET_COKE.getName());
         if (oDietCoke.isPresent()) {
@@ -133,28 +136,34 @@ public class VendingController {
             this.sSprite.valueProperty().addListener((o, oldValue, newValue) -> this.drinkOperationObservable(oldValue, newValue, sprite));
         }
 
-        if (this.user != null) {
-            this.tWelcome.setText("Welcome " + this.user.name());
-            this.vBalance.setText(Util.formatToEuro(this.user.balance()));
-            this.vBalance.setVisible(true);
+        Optional<User> optionalUser = this.userService.findByUsername(this.username);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            this.tWelcome.setText("Welcome " + user.name());
+            this.tBalance.setText("Balance: " + Util.formatToEuro(user.balance()));
             this.tBalance.setVisible(true);
+            this.topUpButton.setVisible(true);
         }
     }
 
     @FXML
-    private void onExitBotton() {
-        this.stageManager.setUser(null);
-        this.stageManager.switchToNextScene(FxmlViewPath.HOME);
+    private void onExitButton() {
+        this.stageManager.switchToNextScene(FxmlViewPath.HOME, null);
     }
 
     @FXML
-    private void onTopUpBotton() {
-
+    private void onTopUpButton() {
+        this.stageManager.switchToNextScene(FxmlViewPath.TOPUP, this.username);
     }
 
     @FXML
-    private void onCashBotton() {
+    private void onCashButton() {
         this.stageManager.switchToNextScene(FxmlViewPath.CASH, this.shoppingCart);
+    }
+
+    @FXML
+    private void onPayButton() {
+
     }
 
     private void drinkOperationObservable(Integer oldValue, Integer newValue, Drink drink) {
@@ -169,14 +178,14 @@ public class VendingController {
         }
 
         if (numberItems > 0) {
-            if (this.stageManager.getUser() == null) {
+            if (this.username == null) {
                 this.cashButton.setVisible(true);
             } else {
-                this.topUpButton.setVisible(true);
+                this.payButton.setVisible(true);
             }
         } else {
             this.cashButton.setVisible(false);
-            this.topUpButton.setVisible(false);
+            this.payButton.setVisible(false);
         }
         this.shoppingCart.setNumberItems(numberItems);
         this.shoppingCart.setQuotedPrice(quotedPrice);

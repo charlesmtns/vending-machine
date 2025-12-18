@@ -1,5 +1,6 @@
 package com.morrisonsislandcampus.cadvs.vendingmachine.config;
 
+import com.morrisonsislandcampus.cadvs.vendingmachine.entity.ShoppingCart;
 import com.morrisonsislandcampus.cadvs.vendingmachine.entity.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public enum StageManager {
 
@@ -15,8 +17,6 @@ public enum StageManager {
     private static final String APPLICATION_TITLE = "Vending Machine";
 
     private Stage primaryStage;
-
-    private User user;
 
     StageManager(Stage stage) {
         this.primaryStage = stage;
@@ -32,14 +32,6 @@ public enum StageManager {
 
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public void switchScene(String fxmlPath) {

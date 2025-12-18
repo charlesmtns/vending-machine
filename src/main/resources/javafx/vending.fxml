@@ -9,7 +9,7 @@
           xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="com.morrisonsislandcampus.cadvs.vendingmachine.controller.VendingController">
 
-    <Button onAction="#onExitBotton" text="X" GridPane.columnIndex="6" GridPane.rowIndex="0"/>
+    <Button onAction="#onExitButton" text="X" GridPane.columnIndex="7" GridPane.rowIndex="0"/>
 
     <Text fx:id="tWelcome" text="Welcome" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="1">
         <font>
@@ -17,8 +17,10 @@
         </font>
     </Text>
 
-    <Text fx:id="tBalance" text="Balance:" GridPane.columnIndex="5" GridPane.rowIndex="1" visible="false"/>
-    <Text fx:id="vBalance" text="1.00€" GridPane.columnIndex="6" GridPane.rowIndex="1" visible="false"/>
+    <Text fx:id="tBalance" text="Balance: 1.00€" GridPane.columnIndex="5" GridPane.rowIndex="1" visible="false"/>
+
+    <Button fx:id="topUpButton" onAction="#onTopUpButton" text="Top up" visible="false" GridPane.columnIndex="6"
+            GridPane.rowIndex="1"/>
 
     <Text fill="#bcbaba" text="Please select your product" GridPane.columnIndex="0" GridPane.columnSpan="3"
           GridPane.rowIndex="2"/>
@@ -44,9 +46,10 @@
     <Text fx:id="tSprite" text="€1.80" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
     <Spinner fx:id="sSprite" min="0" prefHeight="26.0" prefWidth="72.0" GridPane.columnIndex="2" GridPane.rowIndex="6"/>
 
-    <Button fx:id="topUpButton" onAction="#onTopUpBotton" text="Top Up" visible="false" GridPane.columnIndex="4"
+    <Button fx:id="cashButton" onAction="#onCashButton" text="Pay by Cash" visible="false" GridPane.columnIndex="5"
             GridPane.rowIndex="7"/>
-    <Button fx:id="cashButton" onAction="#onCashBotton" text="Pay by Cash" visible="false" GridPane.columnIndex="5"
+
+    <Button fx:id="payButton" onAction="#onPayButton" text="Pay" visible="false" GridPane.columnIndex="6"
             GridPane.rowIndex="7"/>
 
     <columnConstraints>
