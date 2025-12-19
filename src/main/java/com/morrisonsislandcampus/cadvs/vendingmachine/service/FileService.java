@@ -23,8 +23,10 @@ public class FileService {
         List<String> list = new ArrayList<>();
         try (InputStream inputStream = getClass().getResourceAsStream(filePath)) {
             String sData = this.readFromInputStream(inputStream);
-            String[] aData = sData.split(System.lineSeparator());
-            list.addAll(Arrays.asList(aData));
+            if (!sData.isBlank()) {
+                String[] aData = sData.split(System.lineSeparator());
+                list.addAll(Arrays.asList(aData));
+            }
         }
         return list;
     }
