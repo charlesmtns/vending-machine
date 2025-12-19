@@ -27,7 +27,7 @@ public class UserService {
             try {
                 this.fileService.writeToFile(USER_FILE_PATH, userUpdated.convertToCsv());
             } catch (IOException e) {
-                throw new RuntimeException("Error writing file");
+                throw new RuntimeException("Error top up");
             }
         }
     }
@@ -60,5 +60,13 @@ public class UserService {
             System.out.println("User didn't find: " + username);
         }
         return Optional.empty();
+    }
+
+    public void save(User user) {
+        try {
+            this.fileService.writeToFile(USER_FILE_PATH, user.convertToCsv());
+        } catch (IOException e) {
+            throw new RuntimeException("Error saving user");
+        }
     }
 }

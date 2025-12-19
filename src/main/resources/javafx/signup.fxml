@@ -1,89 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<GridPane alignment="CENTER" hgap="10.0" vgap="10" xmlns="http://javafx.com/javafx/17.0.12"
+          xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="com.morrisonsislandcampus.cadvs.vendingmachine.controller.SignUpController">
 
-<GridPane alignment="CENTER" hgap="10.0" vgap="10" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.morrisonsislandcampus.cadvs.vendingmachine.controller.SignUpController">
+    <Button onAction="#onExitBotton" text="X" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
-    <Button onAction="#onExitBotton" text="X" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-
-    <Text fill="#b2afaf" text="Start your journey" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <Text fill="#b2afaf" text="Start your journey" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 
     <Text text="Create your account" GridPane.columnIndex="0" GridPane.rowIndex="2">
         <font>
-            <Font size="31.0" />
+            <Font size="31.0"/>
         </font>
     </Text>
 
-    <Label GridPane.columnIndex="0" GridPane.rowIndex="3">First Name*</Label>
-    <TextField fx:id="firstName" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+    <HBox spacing="10.0" GridPane.columnIndex="0" GridPane.rowIndex="3">
+        <VBox spacing="10.0">
+            <Label>First Name*</Label>
+            <TextField fx:id="firstName"/>
+        </VBox>
+        <VBox spacing="10.0">
+            <Label>Last Name*</Label>
+            <TextField fx:id="lastName"/>
+        </VBox>
+    </HBox>
 
-    <Label GridPane.columnIndex="0" GridPane.rowIndex="5">Last Name*</Label>
-    <TextField fx:id="lastName" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+    <HBox spacing="10.0" GridPane.columnIndex="0" GridPane.rowIndex="4">
+        <VBox spacing="10.0">
+            <Label>User name*</Label>
+            <TextField fx:id="username"/>
+        </VBox>
+        <VBox spacing="10.0">
+            <Label>Pin*</Label>
+            <PasswordField fx:id="pin"/>
+        </VBox>
+    </HBox>
 
-    <Label GridPane.columnIndex="0" GridPane.rowIndex="7">Pin*</Label>
-    <PasswordField fx:id="pin" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+    <HBox spacing="10.0" GridPane.columnIndex="0" GridPane.rowIndex="5">
+        <VBox spacing="10.0">
+            <Label>Date of Birthday*</Label>
+            <DatePicker fx:id="birthday" prefHeight="26.0" prefWidth="161.0"/>
+        </VBox>
+        <VBox prefHeight="53.0" prefWidth="158.0" spacing="10.0">
+            <Label>Gender</Label>
+            <ComboBox fx:id="gender" prefHeight="26.0" prefWidth="160.0" promptText="Select gender"/>
+        </VBox>
+    </HBox>
 
-    <Label GridPane.columnIndex="0" GridPane.rowIndex="9">Date of Birthday*</Label>
-    <DatePicker fx:id="birthday" GridPane.columnIndex="0" GridPane.rowIndex="10" />
+    <HBox spacing="10.0" GridPane.columnIndex="0" GridPane.rowIndex="6">
+        <VBox spacing="10.0">
+            <Label>Email</Label>
+            <TextField fx:id="email"/>
+        </VBox>
+        <VBox spacing="10.0">
+            <Label>Mobile Number</Label>
+            <TextField fx:id="mobileNumber"/>
+        </VBox>
+    </HBox>
 
-    <Label GridPane.columnIndex="0" GridPane.rowIndex="11">Gender</Label>
-    <ComboBox fx:id="gender" promptText="Select gender" GridPane.columnIndex="0" GridPane.rowIndex="12" />
+    <VBox prefHeight="53.0" prefWidth="324.0" spacing="10.0" GridPane.columnIndex="0" GridPane.rowIndex="7">
+        <Label>Address</Label>
+        <TextField fx:id="address" prefHeight="26.0" prefWidth="215.0"/>
+    </VBox>
 
-    <Label GridPane.columnIndex="0" GridPane.rowIndex="13">Email</Label>
-    <TextField fx:id="email" GridPane.rowIndex="14" />
 
-    <Label GridPane.columnIndex="0" GridPane.rowIndex="15">Mobile Number</Label>
-    <TextField fx:id="mobileNumber" GridPane.rowIndex="16" />
+    <HBox spacing="10.0" GridPane.columnIndex="0" GridPane.rowIndex="8">
+        <VBox prefHeight="53.0" prefWidth="158.0" spacing="10.0">
+            <Label>Country</Label>
+            <ComboBox fx:id="country" onAction="#onSelectCountry" promptText="Select Country"/>
+        </VBox>
+        <VBox prefHeight="53.0" prefWidth="160.0" spacing="10.0">
+            <Label fx:id="lCounty" visible="false">County</Label>
+            <ComboBox fx:id="county" prefHeight="26.0" prefWidth="161.0" promptText="Select County" visible="false"/>
+        </VBox>
+    </HBox>
 
-    <Label GridPane.columnIndex="0" GridPane.rowIndex="17">Address</Label>
-    <TextField fx:id="address" GridPane.columnIndex="0" GridPane.rowIndex="18" />
+    <CheckBox fx:id="terms" text="Please accept our terms &amp; privacy policy" GridPane.columnIndex="0"
+              GridPane.rowIndex="9"/>
 
-    <Label GridPane.columnIndex="0" GridPane.rowIndex="19">Country</Label>
-    <ComboBox fx:id="country" onAction="#onSelectCountry" promptText="Select Country" GridPane.rowIndex="20" />
-
-    <Label fx:id="lCounty" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="21">County</Label>
-    <ComboBox fx:id="county" promptText="Select County" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="22" />
-
-    <CheckBox fx:id="terms" text="Please accept our terms &amp; privacy policy" GridPane.columnIndex="0" GridPane.rowIndex="23" />
-
-    <Button alignment="CENTER" defaultButton="true" onAction="#onSignUpButton" prefWidth="260.0" text="Sign Up" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="24" />
-
+    <Button defaultButton="true" onAction="#onSignUpButton" text="Sign Up" GridPane.columnIndex="0"
+            GridPane.rowIndex="10"/>
 
     <columnConstraints>
-        <ColumnConstraints />
-        <ColumnConstraints />
+        <ColumnConstraints/>
+        <ColumnConstraints/>
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
     </rowConstraints>
     <padding>
-        <Insets bottom="20" top="20.0" />
+        <Insets bottom="20" top="20.0"/>
     </padding>
 </GridPane>
