@@ -35,4 +35,23 @@ public class FileService {
             System.out.println("Successfully wrote to the file.");
         }
     }
+
+    public void writeToFile(String filePath, List<String> listText) throws IOException {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(Objects.requireNonNull(getClass().getResource(filePath)).getPath()))) {
+            if (!listText.isEmpty()) {
+                for (String s : listText) {
+                    bw.write(s);
+                    bw.newLine();
+                }
+            }
+            System.out.println("Successfully wrote to the file.");
+        }
+    }
+
+    public void writeNewLineToFile(String filePath, String text) throws IOException {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(Objects.requireNonNull(getClass().getResource(filePath)).getPath(), true))) {
+            bw.write(text);
+            System.out.println("Successfully wrote to the file.");
+        }
+    }
 }

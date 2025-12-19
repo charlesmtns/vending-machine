@@ -18,7 +18,7 @@ public class UserService {
         this.fileService = fileService;
     }
 
-    public void topUp(String username, BigDecimal amount) {
+    public void topUpBalance(String username, BigDecimal amount) {
         Optional<User> optionalUser = this.findByUsername(username);
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
@@ -67,6 +67,20 @@ public class UserService {
             this.fileService.writeToFile(USER_FILE_PATH, user.convertToCsv());
         } catch (IOException e) {
             throw new RuntimeException("Error saving user");
+        }
+    }
+
+    public void payDown(String username, BigDecimal amount) {
+        Optional<User> optionalUser = this.findByUsername(username);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            BigDecimal newAmount = user.balance().subtract(amount);
+            User userUpdated = new User(user.name(), user.username(), user.pin(), newAmount);
+            try {
+                this.fileService.writeToFile(USER_FILE_PATH, userUpdated.convertToCsv());
+            } catch (IOException e) {
+                throw new RuntimeException("Error top up");
+            }
         }
     }
 }

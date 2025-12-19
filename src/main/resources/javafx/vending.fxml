@@ -9,52 +9,67 @@
           xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="com.morrisonsislandcampus.cadvs.vendingmachine.controller.VendingController">
 
-    <Button onAction="#onExitButton" text="X" GridPane.columnIndex="7" GridPane.rowIndex="0"/>
+    <Button onAction="#onExitButton" text="X" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
 
-    <Text fx:id="tWelcome" text="Welcome" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="1">
+    <Text fx:id="tWelcome" text="Welcome" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1">
         <font>
             <Font size="31.0"/>
         </font>
     </Text>
 
-    <Text fx:id="tBalance" text="Balance: 1.00€" GridPane.columnIndex="5" GridPane.rowIndex="1" visible="false"/>
+    <Text fx:id="tBalance" text="Balance: 1.00€" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
 
-    <Button fx:id="topUpButton" onAction="#onTopUpButton" text="Top up" visible="false" GridPane.columnIndex="6"
+    <Button fx:id="topUpButton" onAction="#onTopUpButton" text="Top up" visible="false" GridPane.columnIndex="3"
             GridPane.rowIndex="1"/>
 
-    <Text fill="#bcbaba" text="Please select your product" GridPane.columnIndex="0" GridPane.columnSpan="3"
+    <Text fill="#bcbaba" text="Please select your product" GridPane.columnIndex="0" GridPane.columnSpan="2"
           GridPane.rowIndex="2"/>
 
     <ImageView fx:id="iCoke" fitHeight="112.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true"
                GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-    <Text fx:id="tCoke" text="€1.80" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-    <Spinner fx:id="sCoke" min="0" prefHeight="26.0" prefWidth="72.0" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+    <HBox fx:id="hCoke" alignment="CENTER" prefHeight="112.0" prefWidth="226.0" spacing="10.0" GridPane.columnIndex="1"
+          GridPane.rowIndex="3">
+        <Text fx:id="tCoke" text="€1.80"/>
+        <Spinner fx:id="sCoke" min="0" prefHeight="26.0" prefWidth="72.0"/>
+    </HBox>
+    <Text fx:id="tCokeOutOfStock" text="Out of Stock" GridPane.columnIndex="1" GridPane.columnSpan="1"
+          GridPane.rowIndex="3" visible="false"/>
 
-    <ImageView fx:id="iDietCoke" fitHeight="106.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true"
+    <ImageView fx:id="iDietCoke" fitHeight="112.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true"
                GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-    <Text fx:id="tDietCoke" text="€1.80" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
-    <Spinner fx:id="sDietCoke" min="0" prefHeight="26.0" prefWidth="72.0" GridPane.columnIndex="2"
-             GridPane.rowIndex="4"/>
+    <HBox fx:id="hCokeDiet" alignment="CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <Text fx:id="tDietCoke" text="€1.80"/>
+        <Spinner fx:id="sDietCoke" min="0" prefHeight="26.0" prefWidth="72.0"/>
+    </HBox>
+    <Text fx:id="tDietCokeOutOfStock" text="Out of Stock" visible="false" GridPane.columnIndex="1"
+          GridPane.columnSpan="1" GridPane.rowIndex="4"/>
 
-    <ImageView fx:id="iFanta" fitHeight="108.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true"
+    <ImageView fx:id="iFanta" fitHeight="112.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true"
                GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-    <Text fx:id="tFanta" text="€1.80" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
-    <Spinner fx:id="sFanta" min="0" prefHeight="26.0" prefWidth="72.0" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+    <HBox fx:id="hFanta" alignment="CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+        <Text fx:id="tFanta" text="€1.80"/>
+        <Spinner fx:id="sFanta" min="0" prefHeight="26.0" prefWidth="72.0"/>
+    </HBox>
+    <Text fx:id="tFantaOutOfStock" text="Out of Stock" visible="false" GridPane.columnIndex="1" GridPane.columnSpan="1"
+          GridPane.rowIndex="5"/>
 
-    <ImageView fx:id="iSprite" fitHeight="119.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true"
+    <ImageView fx:id="iSprite" fitHeight="112.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true"
                GridPane.columnIndex="0" GridPane.rowIndex="6"/>
-    <Text fx:id="tSprite" text="€1.80" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
-    <Spinner fx:id="sSprite" min="0" prefHeight="26.0" prefWidth="72.0" GridPane.columnIndex="2" GridPane.rowIndex="6"/>
+    <HBox fx:id="hSprite" alignment="CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+        <Text fx:id="tSprite" text="€1.80"/>
+        <Spinner fx:id="sSprite" min="0" prefHeight="26.0" prefWidth="72.0"/>
+    </HBox>
+    <Text fx:id="tSpriteOutOfStock" text="Out of Stock" visible="false" GridPane.columnIndex="1" GridPane.columnSpan="1"
+          GridPane.rowIndex="6"/>
 
-    <Button fx:id="cashButton" onAction="#onCashButton" text="Pay by Cash" visible="false" GridPane.columnIndex="5"
+    <Button fx:id="cashButton" onAction="#onCashButton" text="Pay by Cash" visible="false" GridPane.columnIndex="2"
             GridPane.rowIndex="7"/>
-
-    <Button fx:id="payButton" onAction="#onPayButton" text="Pay" visible="false" GridPane.columnIndex="6"
+    <Button fx:id="payButton" onAction="#onPayButton" text="Pay" visible="false" GridPane.columnIndex="3"
             GridPane.rowIndex="7"/>
 
     <columnConstraints>
         <ColumnConstraints/>
-        <ColumnConstraints/>
+        <ColumnConstraints halignment="CENTER"/>
         <ColumnConstraints/>
         <ColumnConstraints/>
         <ColumnConstraints/>

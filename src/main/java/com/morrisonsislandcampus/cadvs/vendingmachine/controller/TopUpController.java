@@ -89,7 +89,7 @@ public class TopUpController {
         String cardCvv = this.cardCvv.getText();
 
         if (!cardHolderName.isBlank() && !cardNumber.isBlank() && !cardExpirationDate.isBlank() && !cardCvv.isBlank()) {
-            this.userService.topUp(this.username, this.currentAmountToBeCredited);
+            this.userService.topUpBalance(this.username, this.currentAmountToBeCredited);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Top up result");
             alert.setHeaderText("Top up successful");

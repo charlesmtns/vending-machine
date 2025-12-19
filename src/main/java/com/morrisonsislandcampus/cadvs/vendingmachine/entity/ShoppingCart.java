@@ -1,29 +1,38 @@
 package com.morrisonsislandcampus.cadvs.vendingmachine.entity;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShoppingCart {
 
-    private int numberItems;
-    private BigDecimal quotedPrice;
+    private List<ShoppingCartItem> shoppingCartItems;
+    private User user;
 
     public ShoppingCart() {
-        this.quotedPrice = BigDecimal.ZERO;
+        this.shoppingCartItems = new ArrayList<>();
     }
 
-    public BigDecimal getQuotedPrice() {
-        return quotedPrice;
+    public User getUser() {
+        return user;
     }
 
-    public void setQuotedPrice(BigDecimal quotedPrice) {
-        this.quotedPrice = quotedPrice;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public int getNumberItems() {
-        return numberItems;
+    public List<ShoppingCartItem> getShoppingCartItems() {
+        return shoppingCartItems;
     }
 
-    public void setNumberItems(int numberItems) {
-        this.numberItems = numberItems;
+    public void setShoppingCartItems(List<ShoppingCartItem> shoppingCartItems) {
+        this.shoppingCartItems = shoppingCartItems;
+    }
+
+    public BigDecimal totalQuotedPrice() {
+        if (this.getShoppingCartItems().isEmpty()) {
+            return BigDecimal.ZERO;
+        }
+        return this.getShoppingCartItems().stream().map(ShoppingCartItem::getQuotedPrice).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }
